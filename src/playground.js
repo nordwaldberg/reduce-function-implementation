@@ -138,7 +138,7 @@ async function reduceLoop (asyncArray, fn, initialValue) {
         accumulator = await new Promise(resolve => {
             fn(accumulator, current, index, asyncArray, resolve);
         });
-        index++;
+        index = await new Promise(resolve => add(index, 1, resolve));
         condition = await new Promise(resolve => less(index, asyncArrayLength, resolve));
     }
 

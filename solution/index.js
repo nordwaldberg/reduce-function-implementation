@@ -11,7 +11,7 @@ module.exports = function (Homework) {
             accumulator = await new Promise(resolve => {
                 fn(accumulator, current, index, array, resolve);
             });
-            index++;
+            index = await new Promise(resolve => Homework.add(index, 1, resolve));
             condition = await new Promise(resolve =>  Homework.less(index, arrayLength, resolve));
         }
 
